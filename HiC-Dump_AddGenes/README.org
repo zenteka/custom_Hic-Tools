@@ -1,0 +1,23 @@
+#+AUTHOR: Karol Piera
+#+email: karol.piera@unil.ch
+
+This tool adds gene annotattion to bins. Since columns of bg2 are
+2xbed3, we separate Bin1 locus information and Bin2 locus to anotate
+each separately. We append two columns of gene commma separated lists
+as columns.
+
+Import dump output might different between tools and/or parameters. Make
+sure your output is in bg2 format. That is: colmuns 1-3 are chrom start
+end of Bin1 and columns 4-6 are chrom start end of bin2.
+
+* Installation
+
+Clone or simply copy Dump_AddGeneAnnotation.sh.
+
+* Useage 
+#+begin_src bash
+  chmod +x ./Dump_AddGeneAnnotation.sh
+  ./Dump_AddGeneAnnotation.sh -i [ Path to dump file] \
+                              -a [ Path to gene annotation in bed format]
+#+end_src
+
