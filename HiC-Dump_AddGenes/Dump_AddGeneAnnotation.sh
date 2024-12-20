@@ -50,8 +50,8 @@ fi
 get_header(){
     if [ $(head -n 1 $1 | grep -c 'start') -eq 0 ]; then
         header=('chrom1' 'start1' 'end1'\
-                         'chrom2' 'start2' 'end2'\
-                       'Bin1_Genes' 'Bin2_Genes')
+                         'chrom2' 'start2' 'end2' 'contacts'\
+                'Bin1_Genes' 'Bin2_Genes')
         echo "No header found in the DUMP file. Using default header"
     else
         # load header from the DUMP file as first line
@@ -65,8 +65,8 @@ get_header(){
 }
 
 get_bins() {
-    cut -f 1-3 $1 | sort -k1,1 -k2,2n --parallel 15 > ./Bin1.sorted.tmp
-    cut -f 4-6 $1 | sort -k1,1 -k2,2n --parallel 15 > ./Bin2.sorted.tmp
+    cut -f 1-3 $1 | sort -k1,1 -k2,2n --parallel $threads > ./Bin1.sorted.tmp
+    cut -f 4-6 $1 | sort -k1,1 -k2,2n --parallel $threads > ./Bin2.sorted.tmp
 }
 
 annotate_dump() {
@@ -77,11 +77,12 @@ annotate_dump() {
     bedtools map -a ./Bin2.sorted.tmp -b $ANNOTATION \
              -c 4 -o distinct -null 'NA' > ./Bin2_annotated.tmp
     
-    sort -k1,1 -k2,2n --parallel 15 $DUMP_FILE > ./dump.sorted.tmp
+    sort -k1,1 -k2,2n --parallel $threads $DUMP_FILE > ./dump.sorted.tmp
     paste ./dump.sorted.tmp <(cut -f 4 ./Bin1_annotated.tmp) > ./1.tmp
-    sort -k1,1 -k2,2n --parallel 15 ./1.tmp > ./dump.sorted2.tmp 
-    paste ./dump.sorted2.tmp <(cut -f 4 ./Bin1_annotated.tmp) > ./2.tmp
-    cat ./header ./2.tmp > ./annotated_$FileName.tsv
+    sort -k4,4 -k5,5n --parallel $threads ./1.tmp > ./dump.sorted2.tmp 
+    paste ./dump.sorted2.tmp <(cut -f 4 ./Bin2_annotated.tmp) > ./2.tmp
+    sort -k1,1 -k2,2n -k4,4 -k4,4n --parallel $threads ./2.tmp > ./2.sorted.tmp
+    cat ./header ./2.sorted.tmp > $FileName.annotated.tsv
 }
 
 # Main
