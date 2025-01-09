@@ -1,0 +1,15 @@
+
+Small tool to extract QC from Hi-C maps in hic format (cool support soon).
+
+* Installation
+
+Use conda / mamba to install dependencies from the environment.yml file. For example:
+  
+
+#+begin_src bash
+    conda env create -f environment.yml -n GetHiCStats
+    activate GetHiCStats
+#+end_src
+
+* Useage
+
