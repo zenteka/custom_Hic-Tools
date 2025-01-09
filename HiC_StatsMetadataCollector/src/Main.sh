@@ -2,6 +2,8 @@
 # -*- mode: shell-script -*-
 # -*- coding: utf-8 -*-
 
+set -e
+
 # This program extracts statistics from Hi-C files and plots them.
 # It can take as an input:
 # 1. A directory with Hi-C files (*.hic)
@@ -55,10 +57,12 @@ if [[ $fCount -gt 0 ]]; then
     cat $OUTPUT/*.metadata > $OUTPUT/master_metadata.tsv
     rm $OUTPUT/*.metadata
 elif [[ $dCount -gt 0 ]]; then
-    echo "Found $dCount subdirectories in $INPUT"
     for dir in $INPUT/*; do
-        get_metadata $dir/aligned/inter_30.hic $OUTPUT
+        echo "Processing $dir"
+        get_metadata $dir $OUTPUT
     done
+    cat $OUTPUT/*.metadata > $OUTPUT/master_metadata.tsv
+    rm $OUTPUT/*.metadata
 else
     echo "Neither Hi-C maps nor subdirectories found in $INPUT"
     echo "Check input!"
