@@ -5,11 +5,45 @@ Small tool to extract QC from Hi-C maps in hic format (cool support soon).
 
 Use conda / mamba to install dependencies from the environment.yml file. For example:
   
-
 #+begin_src bash
-    conda env create -f environment.yml -n GetHiCStats
+    conda env create -f environment.yml -n hictk
     activate GetHiCStats
 #+end_src
 
 * Useage
+
+# Script takes as input:
+- A directory containing Hi-C maps in .hic format
+- A directory with subdirectories containing Hi-C maps in .hic format as return by the HiC juicer pipeline
+
+* Output
+
+**  meta.clean.csv output file
+- Sample: The name of the sample (file name or subdirectory name)
+- Hi-C TotalUnique Contacts: The total number of unique Hi-C contacts in the map
+- Hi-C TotalDuplicates: The total number of duplicate Hi-C contacts in the map
+- Hi-C Contacts: The total number of Hi-C contacts in the map
+- Hi-C Inter-chromosomal Contacts: The total number of inter-chromosomal Hi-C contacts in the map
+- Hi-C Intra-chromosomal Contacts: The total number of intra-chromosomal Hi-C contacts in the map
+
+** Plots
+- A bar plot for each metric in the metadata file.
+- AC report is a merged pdf of all the plots.
+
+* Note
+
+Other statistics can be added by modifying the program if needed. Contact me for help.
+
+* Example
+
+This is an example that you can actually run if you want to test (works on electron, positron, neutrino).
+
+#+begin_src bash
+  chmod +x ./src/Main.sh
+  ./src/Main.sh -i /mnt/etemp/karol/data/atlas_work/hicMaps_forTest -o ./output
+#+end_src
+
+
+
+
 
