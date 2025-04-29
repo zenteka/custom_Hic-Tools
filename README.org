@@ -1,0 +1,16 @@
+#+AUTHOR: Karol Piera
+#+Title: Custom Hi-C scripts.
+
+* Main
+
+** Descritpion
+This repository is a collection of scripts that I wrote in the course
+of data analysis. This repository is NOT a package or complete
+analysis, it exists merely to foster collaborative work. You can use
+the scripts freely as they are or modify them but please be mindful that
+the goal of this repository is to share code that sometimes can be unfinished and therefore less robust.
+
+** Content
+Each directory contains a separate, standalone script(s). What they all have in common, is that they can be used from a command line.
+In each directory you will find README file with the useage description.
+
