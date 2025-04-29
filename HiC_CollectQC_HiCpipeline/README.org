@@ -1,0 +1,31 @@
+#+AUTHOR: Karol Piera
+
+* Main
+Collect qc from the output of hic pipeline. After hic maps are created, statistics is saved to inter.txt and inter_30.txt files.
+The objective of this script is to loop over sample directories to collect metadata, clean and parse it into a usable table.
+
+Each directory's name will be used as sample name in the table.
+
+** Key Differences Between `inter.hic` and `inter_30.hic` in Juicer
+
+- **inter.hic**
+  - Contains all inter-chromosomal Hi-C contacts.
+  - Includes contacts regardless of mapping quality (MAPQ).
+  - Useful for comprehensive analysis, but includes lower-confidence alignments.
+
+- **inter_30.hic**
+  - Contains only inter-chromosomal contacts with MAPQ ≥ 30 for both read pairs.
+  - Filters out lower-confidence alignments.
+  - More suitable for high-confidence analysis and downstream processing.
+
+* Usage:
+
+** Installation
+#+begin_src bash
+  micromamba/mamba/conda create -n <name> -f env.yml
+  micromamba/mamba/conda activate <name>
+  chmod +x Collect_inter-Stats.sh make_barplt.py
+#+end_src
+
+** Run
+
