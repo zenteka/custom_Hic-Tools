@@ -28,4 +28,33 @@ Each directory's name will be used as sample name in the table.
 #+end_src
 
 ** Run
+#+begin_src bash
+    ./Collect_inter-Stats.sh -i <hic_pipeline_output_directory> \
+    			 -o <output_dir> \ # Will be created if does not exist
+                             -l <label> # Label for the table that will be created. eg. 2025-04-12_WGD_CPA
+   # Sample out put will look like this
+  drwxrwxr-x. 2 4096 Apr 29 12:37 plots
+  -rw-rw-r--. 1  655 Apr 29 12:36 prostate_Stats_MAPQ30-filtered.csv
+  -rw-rw-r--. 1  655 Apr 29 12:36 prostate_Stats_unfiltered.csv
+   
+#+end_src
+
+** Output
+
+*** Default Extracted statistics:
+- UniqueReads
+- Intra-fragmentReads
+- NormalPaired
+- Intra-chromosomal
+- PCRDuplicates
+- Inter-chromosomal
+- OpticalDuplicates
+- Hi-CContacts
+- SequencedReadPairs
+The list can be extended upon request.
+*** Plots
+Here you can find qc metric plots for each statistic extracted.
+
+*** Master table
+Two csv files: <label>_MAPQ30-filtered.csv and <label>_unfiltered.csv contain all sample-level statistics for filtered and unfiltered data.
 
