@@ -1,0 +1,7 @@
+#+AUTHOR: Karol Piera
+#+TITLE: Merge replicatees
+* Main
+This tool, give two or more multi-resolution replicate hic or mcool files, creates a mega map. The basis for merging is increase in the resolution, "number of contacts" based on the fact that two replicates should not differ in a significant way.
+* Strategy
+
+
