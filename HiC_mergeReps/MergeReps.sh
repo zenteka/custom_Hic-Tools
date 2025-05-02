@@ -43,7 +43,7 @@ while getopts ":i:o:r:t:h" opt; do
 	   mkdir -p "$output/aligned"
 	   ;;
 	r) start_resolution="$OPTARG";;
-	c) convert=1;;              ;; # Convert to hic
+	c) convert=1;;              # Convert to hic
 	t) threads="$OPTARG";;
 	h) usage;;
 	*) echo "Invalid option -$OPTARG" >&2; usage ;;
