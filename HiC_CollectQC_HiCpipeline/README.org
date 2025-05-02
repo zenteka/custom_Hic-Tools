@@ -31,7 +31,7 @@ Each directory's name will be used as sample name in the table.
 #+begin_src bash
     ./Collect_inter-Stats.sh -i <hic_pipeline_output_directory> \
     			 -o <output_dir> \ # Will be created if does not exist
-                             -l <label> # Label for the table that will be created. eg. 2025-04-12_WGD_CPA
+                             -l <label> # Label for the tables that will be created. eg. 2025-04-12_WGD_CPA
    # Sample out put will look like this
   drwxrwxr-x. 2 4096 Apr 29 12:37 plots
   -rw-rw-r--. 1  655 Apr 29 12:36 prostate_Stats_MAPQ30-filtered.csv
@@ -55,6 +55,6 @@ The list can be extended upon request.
 *** Plots
 Here you can find qc metric plots for each statistic extracted.
 
-*** Master table
+*** Master tables
 Two csv files: <label>_MAPQ30-filtered.csv and <label>_unfiltered.csv contain all sample-level statistics for filtered and unfiltered data.
 
