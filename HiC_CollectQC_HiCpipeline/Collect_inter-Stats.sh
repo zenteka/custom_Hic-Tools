@@ -100,6 +100,7 @@ done
 # Make tsv files
 cat $OUTPATH/*_inter.txt > $OUTPATH/Stats_unfiltered.tmp
 cat $OUTPATH/*_inter_30.txt > $OUTPATH/Stats_MAPQ30-filtered.tmp
+
 # prepend to header for both files
 cat $OUTPATH/header.txt $OUTPATH/Stats_unfiltered.tmp > $OUTPATH/${LABEL}_Stats_unfiltered.csv
 cat $OUTPATH/header.txt $OUTPATH/Stats_MAPQ30-filtered.tmp > $OUTPATH/${LABEL}_Stats_MAPQ30-filtered.csv

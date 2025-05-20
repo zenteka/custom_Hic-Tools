@@ -19,11 +19,13 @@ Each directory's name will be used as sample name in the table.
   - More suitable for high-confidence analysis and downstream processing.
 
 * Usage:
-
-** Installation
+Ideally there is no need to a separate environment. The tools only requires python installation with pandas + standard matplot lib and seaborn installation. 
+** Create env or use
+Here is an example:
 #+begin_src bash
-  micromamba/mamba/conda create -n <name> -f env.yml
-  micromamba/mamba/conda activate <name>
+  micromamba/mamba/conda create -n hicQC
+  micromamba/mamba/conda activate hicQC
+  micromamba/mamba/conda install -c conda-forge python pandas matplotlib seaborn
   chmod +x Collect_inter-Stats.sh make_barplt.py
 #+end_src
 
